@@ -1,0 +1,14 @@
+.form-group{
+    width: 350px;
+    position: relative;
+    left: 50%;
+    top: 60px;
+    transform: translate(-50%,-50%);
+}
+button{
+    clear: both;
+    position: relative;
+    left: 50%;
+    top: 60px;
+    transform: translate(-50%,-50%);
+}

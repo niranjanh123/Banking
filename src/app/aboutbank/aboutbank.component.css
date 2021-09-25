@@ -1,0 +1,17 @@
+.card{
+    padding: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #F2FCFC;
+}
+.col{
+    align-items: center;
+    width: 500px;
+    position: relative;
+    transform: translate(40%,50%);
+    clear: both;
+}
+footer{
+    position: relative;
+    top: 75px;
+}

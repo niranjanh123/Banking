@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <h1 style="text-align:center;padding-top: 25px;">Login</h1>
+    <form #loginform="ngForm" >
+      <div class="form-group">
+        <label>CustomerID</label>
+        <input type="text" required #customerid = "ngModel" [class.is-invalid]="customerid.invalid && customerid.touched"
+        class="form-control is-invalid" name ="CustomerID" placeholder="Enter CustomerID" [(ngModel)]=login.CustomerID>
+        <small class ="text-danger" [class.d-none] ="customerid.valid||customerid.untouched">Enter valid ID</small>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" required #paswd = "ngModel" pattern="/d{8}$" class="form-control" name="password" [class.is-invalid]="paswd.invalid && paswd.touched"
+        placeholder="Enter Password" [(ngModel)]=login.password>
+        <div *ngIf="paswd.errors && (paswd.invalid || paswd.untouched)">
+          <small class ="text-danger" *ngIf="paswd.errors.required">Enter registered password</small>
+          <!-- <small class ="text-danger">Minimum length of password should be 8</small> -->
+        </div>
+      </div>
+
+      <div>
+      <button class="btn btn-primary" type="button">Login</button>
+      </div>
+    </form>
+  </div>

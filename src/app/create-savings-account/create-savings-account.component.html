@@ -1,0 +1,145 @@
+<div class="body">
+  <div class = "container-fluid mb-5">
+    <h1 style="text-align:center;margin-top:40px;">Create  a Savings Account</h1>
+        <form [formGroup]= "createNewAccount">
+
+          <div class = "form-group">
+            <label><strong>Title</strong></label>
+            <input [class.is-invalid] ="createNewAccount.get('Title')?.invalid && createNewAccount.get('Title')?.touched" formControlName="Title" class="form-control"   type="text" name="Title"/>
+            <small class ="text-danger" [class.d-none] ="createNewAccount.get('Title')?.valid || createNewAccount.get('Title')?.untouched">Enter title</small>
+          </div>
+          <div class = "form-group">
+            <label><strong>First Name</strong></label>
+            <input [class.is-invalid] ="createNewAccount.get('FirstName')?.invalid && createNewAccount.get('FirstName')?.touched" formControlName="FirstName" class="form-control" type="text" name="firstName"/>
+            <small class ="text-danger" [class.d-none] ="createNewAccount.get('FirstName')?.valid || createNewAccount.get('FirstName')?.untouched">Enter FirstName</small>
+          </div>
+          <div class = "form-group">
+            <label><strong>Middle Name</strong></label>
+            <input [class.is-invalid] ="createNewAccount.get('MiddleName')?.invalid && createNewAccount.get('MiddleName')?.touched" formControlName="MiddleName" class="form-control" type="text" name="middleName"/>
+            <small class ="text-danger" [class.d-none] ="createNewAccount.get('MiddleName')?.valid || createNewAccount.get('MiddleName')?.untouched">Enter MiddleName</small>
+          </div>
+          <div class = "form-group">
+            <label><strong>Last Name</strong></label>
+            <input [class.is-invalid] ="createNewAccount.get('LastName')?.invalid && createNewAccount.get('LastName')?.touched" formControlName="LastName" class="form-control" type="text" name="lastName"/>
+            <small class ="text-danger" [class.d-none] ="createNewAccount.get('LastName')?.valid || createNewAccount.get('LastName')?.untouched">Enter LastName</small>
+          </div>
+          <div class = "form-group">
+            <label><strong>Father's Name</strong></label>
+            <input [class.is-invalid] ="createNewAccount.get('FatherName')?.invalid && createNewAccount.get('FatherName')?.touched" formControlName="FatherName" class="form-control" type="text" name="fatherName"/>
+            <small class ="text-danger" [class.d-none] ="createNewAccount.get('FatherName')?.valid || createNewAccount.get('FatherName')?.untouched">Enter LastName</small>
+          </div>
+          <div class = "form-group">
+            <label><strong>Mobile Number</strong></label>
+            <input [class.is-invalid] ="createNewAccount.get('MobNo')?.invalid && createNewAccount.get('MobNo')?.touched" formControlName="MobNo" class="form-control" type="tel" name="mobileNumber"/>
+            <div *ngIf="createNewAccount.get('MobNo')?.invalid && createNewAccount.get('MobNo')?.touched">
+                <small class="text-danger" *ngIf="createNewAccount.get('MobNo')?.errors?.required">Enter mobile number</small>
+                <small class="text-danger" *ngIf="createNewAccount.get('MobNo')?.errors?.minlength">Enter proper number</small>
+                <small class="text-danger" *ngIf="createNewAccount.get('MobNo')?.errors?.maxlength">Enter proper number</small>
+            </div>
+          </div>
+          <div class = "form-group">
+            <label><strong>Email ID</strong></label>
+            <input  formControlName="EmailID" class="form-control"  type="email" name="emailId" required/>
+          </div>
+          <div class = "form-group">
+            <label><strong>Aadhar Card Number</strong></label>
+            <input formControlName="Aadhar" class="form-control" type="text" name="aadharNumber" />
+          </div>
+          <div class = "form-group">
+            <label><strong>DateOfBirth</strong></label>
+            <input formControlName="DOB" class="form-control" type="text" name="dob" />
+          </div>
+          <div class="form-group" style="font-size: 20px;">
+            <label><strong>Residential address</strong></label>
+          </div>
+          <div class = "form-group">
+              <label><strong>Address Line 1</strong></label>
+              <input formControlName="AddressLine1" class="form-control" required type="text" name="residentAddress1" />
+          </div>
+            <div class = "form-group">
+              <label><strong>Address Line 2</strong></label>
+              <input formControlName="AddressLine2" class="form-control" type="text" name="residentAddress2" />
+            </div>
+            <div class = "form-group">
+              <label><strong>LandMark</strong></label>
+              <input formControlName="Landmark" class="form-control" type="text" name="residentLandMark" />
+            </div>
+            <div class = "form-group">
+              <label><strong>State</strong></label>
+              <input formControlName="State" class="form-control" type="text" name="residentState" />
+            </div>
+            <div class = "form-group">
+              <label><strong>City</strong></label>
+              <input formControlName="City" class="form-control" type="text" name="residentCity"/>
+            </div>
+            <div class = "form-group">
+              <label><strong>Pincode</strong></label>
+              <input formControlName="Pincode" class="form-control" type="text" name="residentPincode" />
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="address_same_as_residental"/>
+                <label>Permanent address same as Residential address</label>
+            </div><br>
+          <div class="form-group" style="font-size:20px;">
+            <label><strong>Permanent address</strong></label></div>
+          <div class = "form-group">
+              <label><strong>Address Line 1</strong></label>
+              <input formControlName="RAddressLine1" class="form-control" required type="text" name="permanentAddress1"/>
+          </div>
+            <div class = "form-group">
+              <label><strong>Address Line 2</strong></label>
+              <input formControlName="RAddressLine2" class="form-control" type="text" name="permanentAddress2" />
+            </div>
+            <div class = "form-group">
+              <label><strong>LandMark</strong></label>
+              <input formControlName="RLandmark" class="form-control" type="text" name="permanentLandMark"/>
+            </div>
+            <div class = "form-group">
+              <label><strong>State</strong></label>
+              <input formControlName="RState" class="form-control" type="text" name="permanentState"/>
+            </div>
+            <div class = "form-group">
+              <label><strong>City</strong></label>
+              <input formControlName="RCity"  class="form-control" type="text" name="permanentCity" />
+            </div>
+            <div class = "form-group">
+              <label><strong>Pincode</strong></label>
+              <input formControlName="RPincode"  class="form-control" type="text" name="permanentPincode" />
+            </div>
+          <div class="form-group" style="font-size:20px;"> 
+            <label><strong>Occupation Details</strong></label>
+          </div>
+          <div class="form-group"> 
+            <label><strong>Occupation Type</strong></label>
+            <input type="text" formControlName="OccupationType" class="form-control" name="occupationType" />
+          </div>
+          <div class="form-group"> 
+            <label><strong>Source Of Income</strong></label>
+            <input type="text" formControlName="SourceOfIncome" class="form-control" name="sourceofIncome"/>
+          </div>
+          <div class="form-group"> 
+            <label><strong> Annual Income</strong></label>
+            <input type="text" formControlName="AnnualIncome" class="form-control" name="grossAnnualIncome" />
+          </div>
+          <div class="form-group" style="font-size:20px;"> 
+            <label><strong>Debit/ATM Card</strong></label>
+          </div>
+          <div class="form-group"> 
+            <label><strong>Do you want a debit card?</strong></label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="netBankingFlag" >
+            <label>Opt for Net Banking</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="agreeFlag">
+            <label>I agree</label>
+          </div>
+          <div>
+            <button class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+    </div>
+</div>
+
+    
