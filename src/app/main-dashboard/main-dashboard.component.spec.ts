@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForgotCustomerIDComponent } from './forgot-customer-id.component';
+import { MainDashboardComponent } from './main-dashboard.component';
 
-describe('ForgotCustomerIDComponent', () => {
-  let component: ForgotCustomerIDComponent;
-  let fixture: ComponentFixture<ForgotCustomerIDComponent>;
+describe('MainDashboardComponent', () => {
+  let component: MainDashboardComponent;
+  let fixture: ComponentFixture<MainDashboardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ForgotCustomerIDComponent ]
+      declarations: [ MainDashboardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ForgotCustomerIDComponent);
+    fixture = TestBed.createComponent(MainDashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

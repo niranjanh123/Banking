@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginModel} from '../../app/login-model'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,19 +7,18 @@ import {LoginModel} from '../../app/login-model'
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
-  login = new LoginModel('','password');
-  gLength:number=8;
-  hasLength:boolean=false;
+ 
+  CustomerID:string='';
+  password:string='';
+
   ngOnInit(): void {
   }
-  // lengthCheck(){
-  //   if(value.Length===this.gLength)
-  //   {
-  //     this.hasLength=true;
-  //   }
-  //   else{
-  //     this.hasLength=false;
-  //   }
-  // }
+  constructor(private router: Router) { }
+  login(){
+    this.router.navigateByUrl('/profile');
+  }
 }
+  // const url = this.router.serializeUrl(
+    //   this.router.createUrlTree([`/main`]) will open a new tab with specified url
+    // );
+    // window.open(url, '_blank');

@@ -16,9 +16,14 @@ export class RegisterComponent implements OnInit {
   //   RNewPassword: new FormControl(''),
   // })
 
+  CustomerID:string='';
+  password:string='';
+  phonenumber:string='';
+  npassword:string='';
+  otp:string=''
   constructor(private reg:FormBuilder) { }
 
-  OneTimeRegisteration = this.reg.group({
+    OneTimeRegisteration = this.reg.group({
     CustomerID: ['',Validators.required],
     OTP: ['',Validators.required],
     NewPassword: ['',[Validators.required,Validators.minLength(8)]],

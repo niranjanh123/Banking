@@ -1,35 +1,63 @@
-<form [formGroup] = "OneTimeRegisteration">
-    <h1 style="text-align: center;">One Time Registration</h1>  
-    <div class="form-group">
-      <label>CustomerID</label>
-      <input type="number" [class.is-invalid]="OneTimeRegisteration.get('CustomerID')?.invalid
-      && OneTimeRegisteration.get('CustomerID')?.touched" formControlName="CustomerID" class="form-control" id="Reg_CustomerID" placeholder="Enter CustomerID">
-      <small class ="text-danger" [class.d-none] ="OneTimeRegisteration.get('CustomerID')?.valid || OneTimeRegisteration.get('CustomerID')?.untouched">Enter valid ID</small>
+<nav class="navbar  navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid"> 
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+      <path d="M8 .95 14.61 4h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.379l.5 2A.5.5 0 0 1 15.5 17H.5a.5.5 0 0 1-.485-.621l.5-2A.5.5 0 0 1 1 14V7H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 4h.89L8 .95zM3.776 4h8.447L8 2.05 3.776 4zM2 7v7h1V7H2zm2 0v7h2.5V7H4zm3.5 0v7h1V7h-1zm2 0v7H12V7H9.5zM13 7v7h1V7h-1zm2-1V5H1v1h14zm-.39 9H1.39l-.25 1h13.72l-.25-1z"/>
+    </svg>
+    <div class="spacer_logo"></div>  
+  <a  routerLink="/aboutbank" style="transform:translateY(17px); margin-left:5px; color: aliceblue;font-size:20px;" class="navbar-brand" href="#">Banking</a>
+  <div class="spacer"></div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a routerLink="/login" class="nav-link active" aria-current="page" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/register" class="nav-link active" href="#">Register</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/create new account" class="nav-link active" href="#">Create New Account</a>
+        </li>
+      </ul>
     </div>
-    <div class="form-group">
-      <label>One Time Password</label>
-      <input type="password" [class.is-invalid]="OneTimeRegisteration.get('OTP')?.invalid
-      && OneTimeRegisteration.get('OTP')?.touched" formControlName="OTP" class="form-control" id="OTP" placeholder="Enter OTP">
-      <small class ="text-danger" [class.d-none] ="OneTimeRegisteration.get('OTP')?.valid || OneTimeRegisteration.get('OTP')?.untouched">Enter OTP</small>
-    </div>
-    <div class="form-group">
-        <label>New Password</label>
-        <input type="password" [class.is-invalid]="OneTimeRegisteration.get('NewPassword')?.invalid && 
-      OneTimeRegisteration.get('NewPassword')?.touched" formControlName="NewPassword" class="form-control" id="NewPassword" placeholder="Password">
-      <div *ngIf = "OneTimeRegisteration.get('NewPassword')?.invalid && OneTimeRegisteration.get('NewPassword')?.touched">  
-      <small class ="text-danger" *ngIf="OneTimeRegisteration.get('NewPassword')?.errors?.required">Enter your new Password</small>
-      <small class ="text-danger" *ngIf="OneTimeRegisteration.get('NewPassword')?.errors?.minlength">Min 8 characters</small>
-      </div>
-    </div>
-    <div class="form-group">
-        <label>Re Enter New Password</label>
-        <input type="password" [class.is-invalid]="OneTimeRegisteration.get('RNewPassword')?.invalid && 
-        OneTimeRegisteration.get('RNewPassword')?.touched"formControlName="RNewPassword" class="form-control" id="Reg_Re_Password" placeholder="Password">
-        <div *ngIf = "OneTimeRegisteration.get('RNewPassword')?.invalid && OneTimeRegisteration.get('RNewPassword')?.touched">  
-          <small class ="text-danger" *ngIf="OneTimeRegisteration.get('RNewPassword')?.errors?.required">Enter your new Password</small>
-          <small class ="text-danger" *ngIf="OneTimeRegisteration.get('RNewPassword')?.errors?.minlength">Min 8 characters</small>
-        </div>
-      </div>
-    
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  </div>
+</nav>
+<div class="position-relative">
+  <div class="position-absolute top-0 start-0 "><img class="img-responsive" src="assets/images/registration2image.jpg" style="width: 130%;height: 80%;"></div>
+</div>
+
+<div class="float-right">
+  <br><br><br><h1 style="text-align:center">Register</h1><br><br>
+<form  style="max-width:500px;margin:auto;">
+
+  <div class="input-container">
+    <i class="fa fa-user icon-user"></i>
+    <input class="input-field" type="text" placeholder="Enter CustomerID" [(ngModel)]="CustomerID">
+  </div>
+  <div class="input-container">
+    <i class="fa fa-mobile-phone icon-phone"></i>
+    <input class="input-field" type="tel" placeholder="Enter Phone Number"[(ngModel)]="phonenumber" >
+
+  </div>
+
+  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="password" placeholder="Enter New Password"[(ngModel)]="password" >
+
+  </div>
+  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="password" placeholder="Re-Enter New Password"[(ngModel)]="npassword" >
+
+  </div>
+  <div class="input-container">
+    <i class="fa fa-lock icon-lock"></i>
+    <input class="input-field" type="password" placeholder="Enter OTP"[(ngModel)]="otp" >
+
+  </div>
+  <p class="p2">Already Registered? <a routerLink="/login" class="text-primary" > Login</a></p><br>
+  <button type="submit" class="btn">Register</button><br>
+
+
+</form>
+
+</div>

@@ -1,6 +1,5 @@
-
 .form-group{
-    width:350px;
+    width:450px;
     left:50%;
     top:60px;
     position:relative;
@@ -16,8 +15,9 @@
 .btn{
     left:50%;
     top:70px;
-    margin-bottom: 30px;
-    margin-top:20px;
     position:relative;
     transform:translate(-50%,-50%);
 }
+  .spacer{
+    flex:8 8 auto;
+  }

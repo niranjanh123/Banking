@@ -1,0 +1,29 @@
+form{
+    margin-left:30%;
+  
+    margin-top: 5%;
+    width:100%;
+  
+  }
+  label {
+  
+    display: inline-block;
+    font-size: 18px;
+  }
+  h2{
+    margin-top:30px;
+  }
+  .form-group row{
+    padding:10px;
+  }
+  input[type=checkbox] {
+    zoom: 1.5;
+  }
+  .btn {
+  
+    margin: .375rem; padding: .90rem 2.5rem;
+     }
+  .button{
+    margin-top: 50px;
+    margin-left: 15%; 
+  }
