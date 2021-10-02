@@ -25,6 +25,7 @@
            Fund Transfer
           </a>
           <div ngbDropdownMenu  style="background-color:white;"class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a ngbDropdownItem routerLink="/payee" style="color: #4A4DE7;"class="dropdown-item"  href="#">Payee</a>
             <a ngbDropdownItem routerLink="/neft" style="color: #4A4DE7;"class="dropdown-item"  href="#">NEFT</a>
             <a ngbDropdownItem routerLink="/rtgs" style="color: #4A4DE7;" class="dropdown-item" href="#">RTGS</a>
             <a ngbDropdownItem routerLink="/imps" style="color: #4A4DE7;" class="dropdown-item" href="#">IMPS</a>
@@ -47,76 +48,44 @@
     </ul>
   </div>
 </nav>
+<button (click)="submitTransactions()" style="transform:translate(-50%,-50%);position: relative;left:48%;"class="btn btn-primary btn-lg btn-outline mt-4 mb-2">Go</button>
+<button (click)="CancelTransactions()" style="transform:translate(-50%,-50%);position: relative;left:50%;"class="btn btn-danger btn-lg btn-outline mt-4 mb-2">Cancel</button>
+  
   <div class="container-fluid  p-2 my-4 bg-dark text-white" style="text-align:center;">
     <h1 style="transform:translateY(5px);">Account Statement</h1>
   </div> 
+ 
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr style="font-size:17px">
+              <th scope="col">Transaction Id</th>
+              <th scope="col">From Account</th>          
+              <th scope="col">To Account</th>            
+              <th scope="col">Amount</th>  
+            </tr>
+        </thead>
+        <tbody>
+
+
+            <tr *ngFor="let Acc of arr" style="font-size:17px">
+              <td>
+                {{Acc.ID}}
+              </td> 
+              <td>
+                {{ Acc.fromAcc }}
+                
+              </td>
+              <td>
+              {{ Acc.toAcc}}
+              
+              </td>
+              <td>
+             {{ Acc.amount }}
+              </td>
+            </tr>  
+        </tbody>
+    </table>
+ 
+   
+
   
-  <div class="container" >
-  <table class="table table-striped">
-  <thead class="thead-light">
-  
-  <tr style="font-size:17px">
-    <th scope="col">Account Number/Nick Name</th>
-    <th scope="col">Account Type</th>
-    <th scope="col">Branch</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let Acc of AccountDetails" style="font-size:17px">
-    
-    <td ><input type="radio"/>
-      {{Acc.Accno}}</td>
-    <td>
-      {{ Acc.AccType }}
-    </td>
-    <td>{{ Acc.branch }}</td>
-  </tr>
-  </tbody>
-  </table>
-  </div><br/>
-  <div class="data">
-  <h2>Selected Account Number
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;829PDIO664415</h2>
-    <strong><h2 style="color:#4a4de7;">Select options for the statement period</h2></strong>
-    <h2>
-      In Case the Account Statement does not reflect all your transactions.Please download statement from the pending statement under  my accounts tab after some time
-    </h2>
-    <mat-radio-group aria-label="Select an option" style="font-size:20px;">
-      <mat-radio-button  value="byDate">By Date</mat-radio-button>
-      <mat-radio-button value="byMonth">By month</mat-radio-button>
-      <mat-radio-button value="last6Months">last 6 months</mat-radio-button>
-      <mat-radio-button value="Year">financial year</mat-radio-button>
-    </mat-radio-group>
-  <br/><br/>
-  <div>
-    <div class="form-group">
-      <label style="font-size:20px;">Start Date</label>
-      <input type="date" name="startDate" style="font-size:20px;"/>
-    </div><br/>
-    <div class="form-group">
-     <label style="font-size:20px;">End Date</label>
-     <input type="date" name="EndDate" style="font-size:20px;"/>
-   </div>
-   </div>
-   <strong><h2 style="color:#4a4de7;">Select appropiate options to view ,print and download for the statement</h2></strong>
-  
-  
-   <mat-radio-group aria-label="Select an option" style="font-size:20px;">
-    <mat-radio-button value="view">View </mat-radio-button>
-    <mat-radio-button value="excel">Download in MS Excel format</mat-radio-button>
-    <mat-radio-button value="last6Months">last 6 months</mat-radio-button>
-    <mat-radio-button value="pdf">download in pdf format</mat-radio-button>
-  </mat-radio-group>
-  <br/><br/>
-  <form >
-  <label for="pages" style="font-size:20px;" >Number of records Per Page</label>
-  <select id="records" name="pagination" style="font-size:20px;">
-    <option value="All">All</option>
-    <option value="5">5</option>
-    <option value="10">10</option>
-    <option value="15">15</option>
-  </select>
-  </form>
-</div>
-  <button style="transform:translate(-50%,-50%);position: relative;left:48%;"class="btn btn-primary btn-lg btn-outline mt-4 mb-2">Go</button>
-  <button style="transform:translate(-50%,-50%);position: relative;left:50%;"class="btn btn-danger btn-lg btn-outline mt-4 mb-2">Cancel</button>

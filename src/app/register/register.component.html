@@ -9,13 +9,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a routerLink="/login" class="nav-link active" aria-current="page" href="#">Login</a>
+          <a routerLink="/login" class="nav-link active" aria-current="page" >Login</a>
         </li>
         <li class="nav-item">
-          <a routerLink="/register" class="nav-link active" href="#">Register</a>
+          <a routerLink="/register" class="nav-link active" >Register</a>
         </li>
         <li class="nav-item">
-          <a routerLink="/create new account" class="nav-link active" href="#">Create New Account</a>
+          <a routerLink="/create new account" class="nav-link active" >Create New Account</a>
         </li>
       </ul>
     </div>
@@ -23,41 +23,30 @@
 </nav>
 <div class="position-relative">
   <div class="position-absolute top-0 start-0 "><img class="img-responsive" src="assets/images/registration2image.jpg" style="width: 130%;height: 80%;"></div>
-</div>
+  </div>
 
 <div class="float-right">
   <br><br><br><h1 style="text-align:center">Register</h1><br><br>
-<form  style="max-width:500px;margin:auto;">
+  <form  #registerForm="ngForm" style="max-width:500px;margin:auto;">
 
-  <div class="input-container">
-    <i class="fa fa-user icon-user"></i>
-    <input class="input-field" type="text" placeholder="Enter CustomerID" [(ngModel)]="CustomerID">
-  </div>
-  <div class="input-container">
-    <i class="fa fa-mobile-phone icon-phone"></i>
-    <input class="input-field" type="tel" placeholder="Enter Phone Number"[(ngModel)]="phonenumber" >
-
-  </div>
-
-  <div class="input-container">
-    <i class="fa fa-key icon"></i>
-    <input class="input-field" type="password" placeholder="Enter New Password"[(ngModel)]="password" >
-
-  </div>
-  <div class="input-container">
-    <i class="fa fa-key icon"></i>
-    <input class="input-field" type="password" placeholder="Re-Enter New Password"[(ngModel)]="npassword" >
-
-  </div>
-  <div class="input-container">
-    <i class="fa fa-lock icon-lock"></i>
-    <input class="input-field" type="password" placeholder="Enter OTP"[(ngModel)]="otp" >
-
-  </div>
-  <p class="p2">Already Registered? <a routerLink="/login" class="text-primary" > Login</a></p><br>
-  <button type="submit" class="btn">Register</button><br>
-
-
-</form>
-
+    <div class="input-container form-group">
+      <i class="fa fa-user icon-user"></i>
+      <input class="input-field" 
+      type="text" placeholder="Enter CustomerID" name="customerId" [(ngModel)]="customerId">
+    </div>
+    <div class="input-container form-group">
+      <i class="fa fa-key icon"></i>
+      <input class="input-field"  type="password" placeholder="Enter New Password" name="Password" [(ngModel)]="Password">
+    </div>
+    <div class="input-container form-group">
+      <i class="fa fa-key icon"></i>
+      <input class="input-field" #npasswords ="ngModel" type="password" placeholder="Re-Enter New Password" name="Reenter_Pasword" [(ngModel)]="Reenter_Password">  
+    </div>
+    <div class="input-container form-group">
+      <i class="fa fa-lock icon-lock"></i>
+      <input class="input-field"  type="password" placeholder="Enter OTP" name="otp"  [(ngModel)]="otp"/>
+    </div>
+    <p class="p2">Already Registered? <a routerLink="/login" class="text-primary" > Login</a></p><br>
+    <button type="submit" class="btn" (click)="reg()">Register</button><br>
+  </form>
 </div>

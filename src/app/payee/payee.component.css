@@ -1,10 +1,8 @@
 form{
-    margin-left:30%;
-  
+    margin-left:30%; 
     margin-top: 5%;
     width:100%;
-  
-  }
+}
   label {
   
     display: inline-block;
@@ -27,3 +25,20 @@ form{
     margin-top: 50px;
     margin-left: 15%; 
   }
+  .data{
+    position: relative;
+    left: 8%;
+    width: 85%;
+ }
+ .spacer{
+     flex:8 8 auto;
+ }
+ .navbar-light{
+     background-color: #4A4DE7;
+ }
+ .dropdown-item:hover{
+     background-color:lightgray;
+ }
+ .link{
+  font-size:17px;
+ }

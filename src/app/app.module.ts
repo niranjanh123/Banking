@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http'; 
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms'
 import {ReactiveFormsModule} from '@angular/forms'
@@ -24,6 +25,9 @@ import { PayeeComponent } from './payee/payee.component';
 import { InternetBankingComponent } from './internet-banking/internet-banking.component';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
+import {ServiceModuleService} from '../../src/app/service-module.service'
+import { DatePipe } from '@angular/common';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,19 +48,20 @@ import { ProfileComponent } from './profile/profile.component';
     InternetBankingComponent,
     MainDashboardComponent,
     ProfileComponent,
+    AdminPanelComponent,
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
     BrowserAnimationsModule,
     MatRadioModule
-
   ],
-  providers: [],
+  providers: [ServiceModuleService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

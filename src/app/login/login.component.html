@@ -9,40 +9,45 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a routerLink="/login" class="nav-link active" aria-current="page" href="#">Login</a>
+          <a routerLink="/login" class="nav-link active" aria-current="page">Login</a>
         </li>
         <li class="nav-item">
-          <a routerLink="/register" class="nav-link active" href="#">Register</a>
+          <a routerLink="/register" class="nav-link active">Register</a>
         </li>
         <li class="nav-item">
-          <a routerLink="/create new account" class="nav-link active" href="#">Create New Account</a>
+          <a routerLink="/create new account" class="nav-link active">Create New Account</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
 <div class="position-relative">
   <div class="position-absolute top-0 start-0 "><img class="img-responsive" src="assets/images/bankimage.jpg" ></div>
 </div>
 <div class="float-right">
   <br><br><br><br><h1 style="text-align:center">Login</h1><br><br>
-<form  style="max-width:500px;margin:auto;">
+  <form  #loginForm="ngForm" style="max-width:500px;margin:auto;">
 
   <div class="input-container">
     <i class="fa fa-user icon"></i>
-    <input class="input-field" type="text" placeholder="Enter CustomerID" [(ngModel)]="CustomerID">
+    <input class="input-field "  type="text" placeholder="Enter CustomerID" name="customerId" [(ngModel)]="customerId">
+    
   </div><br>
 
   <div class="input-container">
     <i class="fa fa-key icon"></i>
-    <input class="input-field" type="text" placeholder="Enter Password"[(ngModel)]="password" >
-
+    <input class="input-field " required 
+     type="text" name="password" placeholder="Enter Password" [(ngModel)]="password" >
+   
   </div>
   <p class="p1"><a routerLink="/forgot-passaword" class="text-secondary">Forget Password?</a></p><br>
-  <button type="submit" class="btn" (click)="login()">Login</button><br>
+  <button type="submit" class="btn" (click)="getCookies()">Login</button><br>
 <p class="p2">
    <br> New User? <a class="text-primary" routerLink="/register">Register</a>
   </p>
 
 </form>
 </div>
+
+

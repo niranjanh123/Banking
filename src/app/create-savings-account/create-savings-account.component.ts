@@ -1,43 +1,61 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder,Validators} from '@angular/forms'
+import { Router } from '@angular/router';
+import {ServiceModuleService} from '../../app/service-module.service'
 @Component({
   selector: 'app-create-savings-account',
   templateUrl: './create-savings-account.component.html',
   styleUrls: ['./create-savings-account.component.css']
 })
-export class CreateSavingsAccountComponent implements OnInit {
+export class CreateSavingsAccountComponent{
 
+
+  constructor(private service:ServiceModuleService) { }
   
-  constructor(private fb:FormBuilder) { }
+  public title:string="";
+  public firstName:string="";
+  public middleName:string="";
+  public lastName:string="";
+  public fatherName:string="";
+  public mobileNumber:string="";
+  public emailId:string="";
+  public addressLine1:string="";
+  public addressLine2:string="";
+  public landmark:string="";
+  public state:string="";
+  public city:string="";
+  public pincode:string="";
+  public aadharNumber:string="";
+  public occupationType:string="";
+  public sourceOfIncome:string="";
+  public grossAnnualIncome:string="";
+  
+  createAccount(){
+    
+    var accountDetails = {
+    title:this.title,
+    firstName:this.firstName,
+    middleName:this.middleName,
+    lastName:this.lastName,
+    fatherName:this.fatherName,
+    mobileNumber:this.mobileNumber,
+    emailId:this.emailId,
+    addressLine1:this.addressLine1,
+    addressLine2:this.addressLine2,
+    landmark:this.landmark,
+    state:this.state,
+    city:this.city,
+    pincode:this.pincode,
+    aadharNumber:this.aadharNumber,
+    occupationType:this.occupationType,
+    sourceOfIncome:this.sourceOfIncome,
+    grossAnnualIncome:this.grossAnnualIncome
 
-  createNewAccount = this.fb.group({
-    Title:['',Validators.required],
-    FirstName:['',Validators.required],
-    MiddleName:['',Validators.required],
-    LastName:['',Validators.required],
-    FatherName:['',Validators.required],
-    MobNo:['',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]],
-    EmailID:['',Validators.required],
-    Aadhar:['',Validators.required],
-    DOB:['',Validators.required],
-    AddressLine1:['',Validators.required],
-    AddressLine2:['',Validators.required],
-    Landmark:['',Validators.required],
-    State:['',Validators.required],
-    City:['',Validators.required],
-    Pincode:['',Validators.required],
-    RAddressLine1:['',Validators.required],
-    RAddressLine2:['',Validators.required],
-    RLandmark:['',Validators.required],
-    RState:['',Validators.required],
-    RCity:['',Validators.required],
-    RPincode:['',Validators.required],
-    OccupationType:['',Validators.required],
-    SourceOfIncome:['',Validators.required],
-    AnnualIncome:['',Validators.required],
-  })
-
-  ngOnInit(): void {
+    }
+    this.service.PostCreateNewAccount(accountDetails).subscribe();
+    alert('Your record has been added successfully!!');
+  
   }
+  
+  
 
 }

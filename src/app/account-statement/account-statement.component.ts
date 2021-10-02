@@ -1,40 +1,56 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Accountdetails {
-  Accno: string;
-  AccType: string;
-  branch: string;
- 
-}
-
-const account: Accountdetails[] = [
-  {
-     Accno : "ADPOI76622166",
-     AccType:"Savings",
-     branch:"Bargur"
-  },
-  {
-    Accno : "829PDIO664415",
-    AccType:"Current",
-    branch:"Chrompet"
- },
- {
-  Accno : "DA4PO2316227",
-  AccType:"Savings",
-  branch:"Koduru"
-}
- 
-];
+import {ServiceModuleService} from '../../app/service-module.service'
 @Component({
   selector: 'app-account-statement',
   templateUrl: './account-statement.component.html',
   styleUrls: ['./account-statement.component.css']
 })
 export class AccountStatementComponent implements OnInit {
-  public AccountDetails = account;
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(private service:ServiceModuleService) { }
+   ngOnInit(): void {
   }
 
+   public arr:any = [];
+   public arr1:any = [];
+   public TransactionList:any = [];
+   public disaplyList:any = {};
+   public ID:number=0;
+   public fromAcc:number=0;
+   public toAcc:number=0;
+   public amount:number=0;
+
+  public ID1:number=0;
+  public fromAcc1:number=0;
+  public toAcc1:number=0;
+  public amount1:number=0;
+   public CancelTransactions(){
+      alert("Are you sure want to cancel the transaction summary");
+   }
+   public  i:number=0;
+  
+
+
+public submitTransactions(){ 
+     
+    this.service.GetTransactionDetails().subscribe(data=>{
+          this.TransactionList = data;
+          console.log(data)
+          for(let obj of data){
+          
+            if(sessionStorage.getItem('UserAccountNumber')==<any>obj.FromAccountNo || sessionStorage.getItem('UserAccountNumber')==<any>obj.ToAccountNo)
+            {
+              this.disaplyList={
+                ID : <any>obj.TransactionId,
+                fromAcc:<any>obj.FromAccountNo,
+                toAcc:<any>obj.ToAccountNo,
+                amount:<any>obj.Amount
+              }
+              this.arr[this.i]=this.disaplyList
+              this.i++
+             
+            }
+          }
+   })
+  }
 }

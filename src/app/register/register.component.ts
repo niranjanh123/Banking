@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormControl, Validators} from '@angular/forms'
-import {FormBuilder,Validator} from '@angular/forms'
+import {ServiceModuleService} from '../../app/service-module.service'
 
 @Component({
   selector: 'app-register',
@@ -8,29 +7,31 @@ import {FormBuilder,Validator} from '@angular/forms'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  // OneTimeRegisteration = new FormGroup({
-  //   CustomerID: new FormControl(''),
-  //   OTP: new FormControl(''),
-  //   NewPassword: new FormControl(''),
-  //   RNewPassword: new FormControl(''),
-  // })
-
-  CustomerID:string='';
-  password:string='';
-  phonenumber:string='';
-  npassword:string='';
-  otp:string=''
-  constructor(private reg:FormBuilder) { }
-
-    OneTimeRegisteration = this.reg.group({
-    CustomerID: ['',Validators.required],
-    OTP: ['',Validators.required],
-    NewPassword: ['',[Validators.required,Validators.minLength(8)]],
-    RNewPassword: ['',[Validators.required,Validators.minLength(8)]],
-  })
-
-  ngOnInit(): void {
+ 
+  constructor(private ser:ServiceModuleService) { 
+    
   }
+    
+  public customerId:number=0;
+  public Password:string="";
+  public Reenter_Password:string="";
+  public otp:string="";
+   ngOnInit(): void {
+  }
+
+  reg()
+  {
+      var details = {
+        customerId:this.customerId,
+      Password:this.Password,
+      Reenter_Password:this.Reenter_Password,
+      otp:this.otp
+    }
+    console.log(details);
+    this.ser.PostRegister(details).subscribe();
+    alert('Your regsitertation is successful!!');
+}
+
+  
 
 }

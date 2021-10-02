@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+import {ServiceModuleService} from '../../app/service-module.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,18 +9,59 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
- 
-  CustomerID:string='';
-  password:string='';
-
   ngOnInit(): void {
   }
-  constructor(private router: Router) { }
-  login(){
-    this.router.navigateByUrl('/profile');
+  public flag:boolean=true;
+  public customerId:number=0; 
+  public password:string ='';
+
+  constructor(private service:ServiceModuleService,private router: Router) { }
+
+  public stores:any = [];
+  public accountdetails:any = [];
+  public arr:any = [];
+
+  getCookies(){
+    
+    this.service.GetRegister() //validate user credentials
+    .subscribe(data=>{this.stores=data
+    console.log(data)
+    for (let obj of data) 
+    {
+      console.log(<any>obj.CustomerId + " " + <any>obj.Password);
+      console.log('input' + this.customerId + ' ' + this.password)
+      if(<any>obj.CustomerId==this.customerId && <any>obj.Password==this.password)
+      {
+        console.log('reached')
+        this.flag=false;
+        this.service.getaccount().subscribe(res=> { 
+        this.accountdetails=res
+        for(let obj1 of res)
+        {
+          if(<any>obj1.CustomerId==this.customerId)
+          {
+            sessionStorage.setItem('UserAccountNumber',<any>obj1.AccountNumber);
+          }
+        }
+    });
+    
+// {AccountNumber: 10000, Balance: 10000, AccountType: 'string', CustomerId: 7003, Customer: null, …}
+
+        this.router.navigateByUrl('/profile');
+      }
+    }
+    if(this.flag)
+    {
+      alert("Invalid login credentials!!")
+    }
+
+  });
+
+    
+  
   }
+
+
+  
 }
-  // const url = this.router.serializeUrl(
-    //   this.router.createUrlTree([`/main`]) will open a new tab with specified url
-    // );
-    // window.open(url, '_blank');
+  
