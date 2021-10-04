@@ -1,6 +1,6 @@
 
 <div class="container-fluid  p-2 my-4 bg-dark text-white" style="text-align:center;">
-    <h1 style="transform:translateY(5px);">Account Statement</h1>
+    <h1 style="transform:translateY(5px);">List of Account Approval</h1>
   </div> 
   
   <div class="container" >
@@ -8,33 +8,57 @@
   <thead class="thead-light">
   
   <tr style="font-size:17px">
+    <th scope="col">CustomerId</th>
     <th scope="col">Applicant Name</th>
     <th scope="col">Email id</th>
-    <th scope="col">Date Of Birth</th>
+    <th scope="col">FatherName</th>
     <th scope="col">Address</th>
     <th scope="col">Aaadhar Number</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let registration of newRegistrations" id="{{registration.aadhar}}"style="font-size:17px">
+  <tr *ngFor="let registration of newRegistrations" id="{{registration.AadharNumber}}"style="font-size:17px">
+    <td>
+    {{registration.CustomerId }}
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
     <td >
-	{{registration.firstName+registration.middleName+registration.lastName}}</td>
-    <td>
-	{{registration.emailId }}
+	{{registration.FirstName+' '+registration.MiddleName+' '+registration.LastName}}
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </td>
     <td>
-	{{registration.dateOfBirth}}
-    <td>
-	{{registration.addressLine1+" "+registration.city+" "+registration.state}}
+	{{registration.EmailId }}
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </td>
     <td>
-	{{registration.aadharNumber}}
+	{{registration.FatherName}}
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <td>
+	{{registration.AddressLine1+" "+registration.City+" "+registration.State}}
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </td>
     <td>
-	<button class="button" (click)="Approve(registration)">Approve</button><br>
-	<button class="button" (click)="Reject()">Reject</button><br>
+	{{registration.AadharNumber}}
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </td>
   </tr>
   </tbody>
   </table>
-  </div><br/>
+  </div>
+  <br/>
+  <div class="container input" style="position: relative; left: 30%;">
+    <label>CustomerId</label>
+    <input class="input-container" name="customerId" [(ngModel)]="customerId"/><br>
+    <ol>
+        <li>
+            <button class="button" (click)="approve()">Approve All</button><br>
+        </li>
+        <li>
+            <button class="button" (click)="reject()">Reject</button><br>
+        </li>
+    </ol>
+  </div>
+       
+     
+
+

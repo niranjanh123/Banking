@@ -1,96 +1,109 @@
 import { Component, OnInit } from '@angular/core';
+import {ServiceModuleService} from '../../app/service-module.service'
 
-interface trans{
-  date:string;
-  Narration:string;
-  Cheque:string;
-  Debit:number;
-  Credit:number;
-  Balance:number;
-}
-const transaction : trans[] =[
-  {
-   date:"30/09/2021",
-   Narration:"To TRANSFER UPI/DR/12424523326/PAYTM/2331/PAYME",
-   Cheque:"TRANSFER TO 78172317931",
-   Debit:56.00,
-   Credit:7832.98,
-   Balance:2109.76
-  },
-  {
-    date:"20/05/2021",
-    Narration:"To TRANSFER UPI/DR/1DGHA23326/PAYTM/23W1/PAYME",
-    Cheque:"TRANSFER TO 77383317931",
-    Debit:78.00,
-    Credit:9032.71,
-    Balance:7109.36
-   },
-   {
-    date:"10/08/2021",
-    Narration:"To TRANSFER UPI/DR/1DGHA23326/PAYTM/23W1/PAYME",
-    Cheque:"TRANSFER TO 77383317931",
-    Debit:78.00,
-    Credit:9032.71,
-    Balance:7109.36
-   },
-   {
-    date:"01/05/2021",
-    Narration:"To TRANSFER UPI/DR/1DGHA23326/PAYTM/23W1/PAYME",
-    Cheque:"TRANSFER TO 77383317931",
-    Debit:78.00,
-    Credit:9032.71,
-    Balance:7109.36
-   },
-   {
-    date:"11/08/2021",
-    Narration:"To TRANSFER UPI/DR/1DGHA23326/PAYTM/23W1/PAYME",
-    Cheque:"TRANSFER TO 77383317931",
-    Debit:78.00,
-    Credit:9032.71,
-    Balance:7109.36
-   },
-   {
-    date:"21/10/2021",
-    Narration:"To TRANSFER UPI/DR/1DGHA23326/PAYTM/23W1/PAYME",
-    Cheque:"TRANSFER TO 77383317931",
-    Debit:78.00,
-    Credit:9032.71,
-    Balance:7109.36
-   },
-   {
-    date:"22/07/2021",
-    Narration:"To TRANSFER UPI/DR/1DGHA23326/PAYTM/23W1/PAYME",
-    Cheque:"TRANSFER TO 77383317931",
-    Debit:78.00,
-    Credit:9032.71,
-    Balance:7109.36
-   }
-]
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  public Accno:string= "00000675448784231";
-  public AccType:string= "Savings";
-  public branch:string= "Chrompet,Chennai";
-  public address:string="Bashyam Street,Opposite to MIT campus,Chrompet,Chennai 600048";
-  public AccountName:string="Mr.OM PPRAKASH DEVARAJ";
-  public InterestRate:number=2.7;
-  public DrawingPower:string="0.00";
-  public MODBalance:string="0.00";
-  public CustomerID:string="08972562431";
-  public IFSCCode:string="BANK92830214";
-  public MICRCode:string="324SDFGF2123";
-  public Nomination:string="Yes";
-  public Balance:number=1387.80;
-  public noOfTransactions:number=7;
-  public Transactions = transaction;
-  public transFlag:boolean=true;
-  constructor() { }
+  
+  public Account_Number:any;
+  public Balance:any;	
+  public Customer_Id:any;	
+  public title:string="";
+  public firstName:string="";
+  public middleName:string="";
+  public lastName:string="";
+  public fatherName:string="";
+  public mobileNumber:string="";
+  public emailId:string="";
+  public addressLine1:string="";
+  public addressLine2:string="";
+  public landmark:string="";
+  public state:string="";
+  public city:string="";
+  public pincode:string="";
+  public aadharNumber:string="";
+  public phoneNumber:string="";
 
+  public Address:any;
+
+  constructor(private service: ServiceModuleService) {
+    
+   }
   ngOnInit(): void {
+    this.getAccountDetails();
+    this.getCustomerDetails();
   }
+  //{AccountNumber: 10000, Balance: 10000, AccountType: 'string', CustomerId: 7003, Customer: null, …
+   getAccountDetails()
+  {
+    console.log('reached account')
+    this.service.getaccount().subscribe(res=>{
+      console.log(res);
+          for(let obj1 of res)
+          {
+            if(sessionStorage.getItem('UserAccountNumber')==<any>obj1.AccountNumber)
+              {
+                this.Account_Number=sessionStorage.getItem('UserAccountNumber');
+                this.Customer_Id=<any>obj1.CustomerId;
+                this.Balance=<any>obj1.Balance;
+              }
+          }
+          
+   })
+  }
+  getCustomerDetails()
+  {
+    console.log('reached customer')
+    this.service.GetCreateNewAccount().subscribe(data=>{
+          console.log(data)
+          for(let obj of data)
+          {
+              if(this.Customer_Id==<any>obj.CustomerId)
+              { 
+                this.firstName=<any>obj.FirstName;
+                this.middleName=<any>obj.MiddleName;
+                this.lastName=<any>obj.LastName;
+                this.fatherName=<any>obj.FatherName;
+                this.phoneNumber=<any>obj.MobileNumber;
+                this.aadharNumber=<any>obj.AadharNumber;
+                this.emailId=<any>obj.EmailId;
+                this.addressLine1=<any>obj.AddressLine1;
+                this.addressLine2=<any>obj.AddressLine2;
+                this.state=<any>obj.State;
+                this.city=<any>obj.City;
+                this.pincode=<any>obj.Pincode;
+                
+              }
+          }
+        
+   })
+  }
+  
 
 }
+/*
+AadharNumber: "string"
+Accounts: []
+AddressLine1: "string"
+AddressLine2: "string"
+City: "string"
+CustomerId: 7003
+EmailId: "string"
+FatherName: "string"
+FirstName: "Niranjan"
+GrossAnnualIncome: "string"
+InternetBankings: []
+Landmark: "string"
+LastName: "string"
+MiddleName: "string"
+MobileNumber: "string"
+OccupationType: "string"
+Pincode: "string"
+Registers: []
+SourceOfIncome: "string"
+State: "string"
+Title: "string"
+*/

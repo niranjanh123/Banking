@@ -9,3 +9,10 @@
   display: inline-block;
   font-size: 16px;
 }
+.input ol li{
+  list-style: none;
+  float: left;
+  padding: 20px;
+  position: relative;
+  left: -5%;
+}

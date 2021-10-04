@@ -15,7 +15,10 @@ import { NewPasswordComponent } from './new-password/new-password.component';
 import { RegisterComponent } from './register/register.component';
 import { AboutbankComponent } from './aboutbank/aboutbank.component';
 import { ProfileComponent } from './profile/profile.component';
+import { InternetBankingComponent } from './internet-banking/internet-banking.component';
 import { CreateSavingsAccountComponent } from './create-savings-account/create-savings-account.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component'
+
 const routes: Routes = [
   {path:'',component: AboutbankComponent},
   {path:'home',component: AboutbankComponent},
@@ -33,8 +36,9 @@ const routes: Routes = [
   {path:'forgot-passaword',component:ForgotPasswordComponent},
   {path:'forgot-transaction',component: NewPasswordComponent},
   {path:'profile',component:  ProfileComponent},
-  {path:'main',component:  MainDashboardComponent}
-
+  {path:'main',component:  MainDashboardComponent},
+  {path:'internet-banking',component:  InternetBankingComponent},
+  {path:'admin-panel',component:  AdminPanelComponent},
 ];
 
 @NgModule({
