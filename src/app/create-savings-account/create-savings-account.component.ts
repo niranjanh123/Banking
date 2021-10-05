@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import {ServiceModuleService} from '../../app/service-module.service'
+
 @Component({
   selector: 'app-create-savings-account',
   templateUrl: './create-savings-account.component.html',
@@ -28,10 +28,18 @@ export class CreateSavingsAccountComponent{
   public occupationType:string="";
   public sourceOfIncome:string="";
   public grossAnnualIncome:string="";
-  
+
   createAccount(){
-    
+    if(this.firstName.length==0 || this.lastName.length==0||this.emailId.length==0||this.mobileNumber.length==0)
+    {
+      alert('Enter the input properly ')
+    }
+    if(this.mobileNumber.length!=10)
+    {
+      alert('Invalid mobile Number')
+    }
     var accountDetails = {
+    customerId:0,
     title:this.title,
     firstName:this.firstName,
     middleName:this.middleName,
@@ -51,8 +59,9 @@ export class CreateSavingsAccountComponent{
     grossAnnualIncome:this.grossAnnualIncome
 
     }
-    this.service.PostCreateNewAccount(accountDetails).subscribe();
     alert('Your record has been added successfully!!');
+    this.service.PostCreateNewAccount(accountDetails).subscribe();
+
   
   }
   

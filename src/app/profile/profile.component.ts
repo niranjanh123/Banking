@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ServiceModuleService} from '../../app/service-module.service'
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -27,15 +27,61 @@ export class ProfileComponent implements OnInit {
   public aadharNumber:string="";
   public phoneNumber:string="";
 
+  public welcome:string="";
   public Address:any;
 
-  constructor(private service: ServiceModuleService) {
+  constructor(private service: ServiceModuleService,private router: Router) {
     
    }
+
+   public deleteCookie(){
+    sessionStorage.clear();
+    this.router.navigateByUrl('/login');   
+  }
+
   ngOnInit(): void {
+    this.getName()
     this.getAccountDetails();
     this.getCustomerDetails();
   }
+
+  getName(){
+    let id:any;
+    this.service.getaccount().subscribe(data=>
+      {
+        console.log(data)
+        for(let obj of data)
+        {
+          if(<any>obj.AccountNumber==sessionStorage.getItem('UserAccountNumber'))
+          {
+            id=<any>obj.CustomerId
+          }
+        }
+      })
+
+      this.service.GetCreateNewAccount().subscribe(data=>
+        {
+          console.log(data)
+          for(let obj of data)
+          {
+            if(<any>obj.CustomerId==id)
+            {
+              console.log(<any>obj.FirstName)
+              this.welcome=<any>obj.FirstName
+            }
+          }
+        })
+  }
+
+
+
+
+
+
+
+
+
+
   //{AccountNumber: 10000, Balance: 10000, AccountType: 'string', CustomerId: 7003, Customer: null, …
    getAccountDetails()
   {
@@ -84,26 +130,3 @@ export class ProfileComponent implements OnInit {
   
 
 }
-/*
-AadharNumber: "string"
-Accounts: []
-AddressLine1: "string"
-AddressLine2: "string"
-City: "string"
-CustomerId: 7003
-EmailId: "string"
-FatherName: "string"
-FirstName: "Niranjan"
-GrossAnnualIncome: "string"
-InternetBankings: []
-Landmark: "string"
-LastName: "string"
-MiddleName: "string"
-MobileNumber: "string"
-OccupationType: "string"
-Pincode: "string"
-Registers: []
-SourceOfIncome: "string"
-State: "string"
-Title: "string"
-*/

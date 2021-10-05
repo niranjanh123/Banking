@@ -25,7 +25,7 @@
            Fund Transfer
           </a>
           <div ngbDropdownMenu  style="background-color:white;"class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            
+            <a ngbDropdownItem routerLink="/payee" style="color: #4A4DE7;"class="dropdown-item"  href="#">Payee</a>
             <a ngbDropdownItem routerLink="/neft" style="color: #4A4DE7;"class="dropdown-item"  href="#">NEFT</a>
             <a ngbDropdownItem routerLink="/rtgs" style="color: #4A4DE7;" class="dropdown-item" href="#">RTGS</a>
             <a ngbDropdownItem routerLink="/imps" style="color: #4A4DE7;" class="dropdown-item" href="#">IMPS</a>
@@ -45,6 +45,10 @@
           <a ngbDropdownItem  routerLink="/forgot-transaction" style="color: #4A4DE7;" class="dropdown-item" href="#">Reset Transaction Password</a>
         </div>
       </li>
+      <li class="nav-item">
+        <a style="color:aliceblue" class="nav-link" (click)="deleteCookie()">Logout</a>
+      </li>
+      
     </ul>
   </div>
 </nav>
@@ -89,6 +93,10 @@
         <div class="col-sm-10">
           <input type="text" class="form-control form-control-lg"style="width:400px;" >
         </div>
+      </div>
+      <div class="message">
+        <p>If you Enter wrong Account Number or Beneficiary Account Number Transaction won't take place.</p>
+        <p>Ensure you have sufficient balance for fund transfer</p>
       </div>
       <div class="button">
       <button class="btn btn-primary" type="submit"  (click)="submitimps()">Submit</button>

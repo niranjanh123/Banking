@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ServiceModuleService} from '../../app/service-module.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-rtgs',
   templateUrl: './rtgs.component.html',
@@ -7,7 +8,7 @@ import {ServiceModuleService} from '../../app/service-module.service';
 })
 export class RtgsComponent implements OnInit {
 
-  constructor(private service:ServiceModuleService) { }
+  constructor(private service:ServiceModuleService,private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +25,11 @@ export class RtgsComponent implements OnInit {
   flag:boolean=false;
   flag1:boolean=false;
   flag2:boolean=false;
+
+  public deleteCookie(){
+    sessionStorage.clear();
+    this.router.navigateByUrl('/login');   
+  }
   
   public submitRtgs(){
     this.service.getaccount().subscribe(data=>
@@ -60,13 +66,8 @@ export class RtgsComponent implements OnInit {
           }
         })
       console.log(this.flag+' '+this.flag1+' '+this.flag2)
-      if(this.flag==false){
-        alert('Entered wrong Account Number')
-      }
-      else if(this.flag1==false){
-        alert('Entered wrong Beneficiary Account Number')
-      }
-      else if(this.flag2==false){
+      
+      if(this.flag2==false){
         alert('Entered wrong Transaction Password')
       }
       else if(this.flag&&this.flag1&&this.flag2){

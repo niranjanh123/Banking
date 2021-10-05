@@ -18,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { InternetBankingComponent } from './internet-banking/internet-banking.component';
 import { CreateSavingsAccountComponent } from './create-savings-account/create-savings-account.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component'
+import { CustomersViewComponent } from './customers-view/customers-view.component'
 
 const routes: Routes = [
   {path:'',component: AboutbankComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path:'main',component:  MainDashboardComponent},
   {path:'internet-banking',component:  InternetBankingComponent},
   {path:'admin-panel',component:  AdminPanelComponent},
+  {path:'Customer-view',component:  CustomersViewComponent},
 ];
 
 @NgModule({

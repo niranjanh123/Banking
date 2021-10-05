@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ServiceModuleService} from '../../app/service-module.service'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-account-statement',
   templateUrl: './account-statement.component.html',
@@ -7,10 +8,11 @@ import {ServiceModuleService} from '../../app/service-module.service'
 })
 export class AccountStatementComponent implements OnInit {
 
-  constructor(private service:ServiceModuleService) { }
+  constructor(private service:ServiceModuleService,private router: Router) { }
    ngOnInit(): void {
+     this.accountBalance()
   }
-
+   public acc_bal:any;
    public arr:any = [];
    public arr1:any = [];
    public TransactionList:any = [];
@@ -29,7 +31,25 @@ export class AccountStatementComponent implements OnInit {
    }
    public  i:number=0;
   
+   public deleteCookie(){
+     sessionStorage.clear();
+     this.router.navigateByUrl('/login');   
+   }
 
+   accountBalance(){
+     this.service.getaccount().subscribe(data=>
+      {
+        console.log(data)
+        for(let obj of data)
+        {
+          if(<any>obj.AccountNumber==sessionStorage.getItem('UserAccountNumber'))
+          {
+              this.acc_bal=<any>obj.Balance;
+              console.log(this.acc_bal)
+          }
+        }
+      })
+   }
 
 public submitTransactions(){ 
      

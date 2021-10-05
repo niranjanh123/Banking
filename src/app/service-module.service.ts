@@ -61,6 +61,12 @@ export class ServiceModuleService {
   getaccount():Observable<any[]>{//gets data from account table
     return this.http.get<any>('http://localhost:16047/api/Accounts');
 }
+PutAccount(accountNumber:any,val:any):Observable<any>{ //updates data in account table
+  let uri = 'http://localhost:16047/api/Accounts/' + accountNumber
+  console.log(uri)
+  return this.http.put<any>(uri,val);
+}
+
     PostImps(val:any):Observable<any>{//adds data to transactions table
       return this.http.post('http://localhost:16047/api/Transactions',val);
     }

@@ -1,12 +1,9 @@
-
 <div class="container-fluid  p-2 my-4 bg-dark text-white" style="text-align:center;">
-    <h1 style="transform:translateY(5px);">List of Account Approval</h1>
+    <h1 style="transform:translateY(5px);">List of Customers</h1>
   </div> 
-  
-  <div class="container" >
-  <table class="table table-striped">
-  <thead class="thead-light">
-  
+    <div class="container" >
+    <table class="table table-striped">
+    <thead class="thead-light">
   <tr style="font-size:17px">
     <th scope="col">CustomerId</th>
     <th scope="col">Applicant Name</th>
@@ -17,7 +14,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let registration of newRegistrations" id="{{registration.AadharNumber}}"style="font-size:17px">
+  <tr *ngFor="let registration of list" id="{{registration.AadharNumber}}"style="font-size:17px">
     <td>
     {{registration.CustomerId }}
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -45,23 +42,5 @@
   </tbody>
   </table>
   </div>
-  <br/> <br/>
-  <div class="container input" style="position: relative; left: 30%;">
-    <label style="margin-right: 25px;">CustomerId</label>
-    <input class="input-container" name="id" [(ngModel)]="id"/> <br/> <br/>
-    <ol>
-        <li>
-            <button class="button" (click)="approve()">Approve All</button><br>
-        </li>
-        <li>
-            <button class="button" (click)="reject()">Reject</button><br>
-        </li>
-        <li>
-            <button class="button" (click)="Customers()">View All Customers</button><br>
-        </li>
-    </ol>
-  </div>
-       
-     
-
-
+ 
+  <br/>

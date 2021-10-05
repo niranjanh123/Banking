@@ -15,3 +15,10 @@
  .link{
   font-size:17px;
  }
+.balance{
+    position: relative;
+    left: 75%;
+    top: -20%;
+    color: #4A4DE7;
+    font-size: large;
+}

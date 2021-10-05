@@ -45,6 +45,9 @@
           <a ngbDropdownItem  routerLink="/forgot-transaction" style="color: #4A4DE7;" class="dropdown-item" href="#">Reset Transaction Password</a>
         </div>
       </li>
+      <li class="nav-item">
+        <a style="color:aliceblue" class="nav-link" (click)="deleteCookie()">Logout</a>
+      </li>
     </ul>
   </div>
 </nav>
@@ -54,6 +57,10 @@
   <div class="container-fluid  p-2 my-4 bg-dark text-white" style="text-align:center;">
     <h1 style="transform:translateY(5px);">Account Statement</h1>
   </div> 
+
+  <div class="balance" name="acc_bal" [(ngModel)]="acc_bal">
+    {{'Your account balance is '+ acc_bal}}
+  </div>
  
     <table class="table table-striped">
         <thead class="thead-light">

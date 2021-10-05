@@ -27,7 +27,8 @@ import { MainDashboardComponent } from './main-dashboard/main-dashboard.componen
 import { ProfileComponent } from './profile/profile.component';
 import {ServiceModuleService} from '../../src/app/service-module.service'
 import { DatePipe } from '@angular/common';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component'
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { CustomersViewComponent } from './customers-view/customers-view.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +50,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component'
     MainDashboardComponent,
     ProfileComponent,
     AdminPanelComponent,
+    CustomersViewComponent,
    
   ],
   imports: [

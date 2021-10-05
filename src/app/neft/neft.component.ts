@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ServiceModuleService} from '../../app/service-module.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-neft',
   templateUrl: './neft.component.html',
@@ -7,10 +9,16 @@ import {ServiceModuleService} from '../../app/service-module.service';
 })
 export class NeftComponent implements OnInit {
 
-  constructor(private service:ServiceModuleService) { }
+  constructor(private service:ServiceModuleService,private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  public deleteCookie(){
+    sessionStorage.clear();
+    this.router.navigateByUrl('/login');   
+  }
+  
   public fromAccountNo:number=0;
   public toAccountNo:number=0;
   public amount:number=0;
@@ -61,13 +69,7 @@ export class NeftComponent implements OnInit {
           }
         })
       console.log(this.flag+' '+this.flag1+' '+this.flag2)
-      if(this.flag==false){
-        alert('Entered wrong Account Number')
-      }
-      else if(this.flag1==false){
-        alert('Entered wrong Beneficiary Account Number')
-      }
-      else if(this.flag2==false){
+     if(this.flag2==false){
         alert('Entered wrong Transaction Password')
       }
       else if(this.flag&&this.flag1&&this.flag2){

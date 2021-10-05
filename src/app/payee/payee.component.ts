@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ServiceModuleService} from '../../app/service-module.service'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-payee',
   templateUrl: './payee.component.html',
@@ -17,11 +18,15 @@ export class PayeeComponent implements OnInit
     
     public getAccount:any = [];
     public getBeneficiary:any= [];
-    constructor(private service:ServiceModuleService) {}
+    constructor(private service:ServiceModuleService,private router: Router) {}
 
     
     ngOnInit(): void {
       
+    }
+    public deleteCookie(){
+      sessionStorage.clear();
+      this.router.navigateByUrl('/login');   
     }
  
     getAcc():any

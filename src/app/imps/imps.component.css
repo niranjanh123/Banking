@@ -5,7 +5,9 @@ form{
     position: relative;
     top:-10%
   }
-
+  .message{
+    color: #4A4DE7;
+  }
   .form-group row{
     padding:10px;
   }

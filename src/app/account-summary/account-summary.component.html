@@ -45,35 +45,70 @@
           <a ngbDropdownItem  routerLink="/forgot-transaction" style="color: #4A4DE7;" class="dropdown-item" href="#">Reset Transaction Password</a>
         </div>
       </li>
+
+      <li class="nav-item">
+        <a style="color:aliceblue" (click)="deleteCookie()" class="nav-link">Logout</a>
+      </li>
+
     </ul>
   </div>
 </nav>
-  <div class="container-fluid  p-2 my-4 bg-dark text-white" style="text-align:center;">
-    <h1 style="transform:translateY(5px);">Account Summary</h1>
-  </div> 
+<div class="container-fluid  p-2 my-4 bg-dark text-white" style="text-align:center;">
+  <h1 style="transform:translateY(5px);">Account Details</h1>
+</div> 
 
-<div class="container" style="transform:translate(0%,0%)">
+<div class="container" >
 <table class="table table-striped">
-  <thead class="thead-light">
-  <tr style="font-size:17px">
-    <th scope="col">Account Number/Nick Name</th>
-    <th scope="col">Branch</th>
-    <th scope="col">Available balance</th>
-    <th scope="col">Transactions</th>
+<thead class="thead-light"></thead>
+<tbody>
+
+  <tr>
+  <th >Account Number</th>
+  <td>{{Account_Number}}</td>
   </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let Acc of AccountDetails" style="font-size:17px">
-    
-    <td >
-      {{Acc.Accno}}</td>
-    <td>{{ Acc.branch }}</td>
-    <td><u><a href="#" style="color:#4a4de7">click here for balance</a></u></td>
-    <td><u><a href="#" style="color:#4a4de7">click here for last 10 transactions</a></u></td>
+
+  <tr>
+  <th scope="col">Balance</th>
+  <td>{{Balance}}</td>
   </tr>
-  </tbody>
+
+  <tr>
+  <th scope="col">First Name</th>
+  <td>{{firstName}}</td>
+  </tr>
+
+  <tr>
+  <th scope="col">Middle Name</th>
+  <td>{{middleName}}</td>
+  </tr>
+
+  <tr>
+    <th scope="col">Last Name</th>
+    <td>{{lastName}}</td>
+  </tr>
+
+  <tr>
+    <th scope="col">Father's Name</th>
+    <td>{{fatherName}}</td>
+  </tr>
+
+  <tr>
+    <th scope="col">Phone Number</th>
+    <td>{{phoneNumber}}</td>
+  </tr>
+
+  <tr>
+    <th scope="col">Aadhar Number</th>
+    <td>{{aadharNumber}}</td>
+  </tr>
+
+  <tr>
+    <th scope="col">emailId</th>
+    <td>{{emailId}}</td>
+  </tr>
+ 
+</tbody>
 </table>
 </div><br/>
 
-<div class="link "><u><a  href="#" style="color:#4a4de7;left:35%;position: relative;transform:translate(-50%,-50%);">View Nomination and Pan Details</a></u>
-<u><a  href="#" style="color:#4a4de7;left:40%;position: relative;transform:translate(-50%,-50%);">View all balance</a></u></div>
+

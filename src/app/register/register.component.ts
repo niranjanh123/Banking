@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   reg()
   {
       var details = {
-        customerId:this.customerId,
+      customerId:this.customerId,
       Password:this.Password,
       Reenter_Password:this.Reenter_Password,
       otp:this.otp
